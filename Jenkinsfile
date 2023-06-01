@@ -13,10 +13,10 @@ pipeline {
         stage('checkout') {
             steps {
                  script{
-                        dir("terraform")
+                        dir("infrastructure/dev")
                         {
                             git "https://github.com/LiorAronov/Flask-Crypto-App.git"
-                            
+
                         }
                     }
                 }
