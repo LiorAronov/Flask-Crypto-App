@@ -13,5 +13,5 @@ resource "aws_key_pair" "public_terrform_key" {
 # Private key - store in local file.
 resource "local_file" "private_terrform_key" {
   content  = tls_private_key.rsa.private_key_pem
-  filename = "../../../private_terrform_key/${var.private_key_name}.pem"  
+  filename = "../../keys/${var.private_key_name}"  
 }
