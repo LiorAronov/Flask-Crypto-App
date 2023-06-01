@@ -26,9 +26,9 @@ pipeline {
         stage('Plan') {
             steps { 
                  {
-                sh 'pwd;cd tf_test/infrastructure/dev ; terraform init'
-                sh "pwd;cd tf_test/infrastructure/dev ; terraform plan "
-                sh 'pwd;cd tf_test/infrastructure/dev ; terraform show '
+                sh 'pwd; cd tf_test/infrastructure/dev; terraform init'
+                sh 'pwd; cd tf_test/infrastructure/dev; terraform plan -out=tfplan'
+                sh 'pwd; cd tf_test/infrastructure/dev; terraform show -json tfplan > tfstate.json'
                 }
             }
         }
@@ -37,9 +37,9 @@ pipeline {
             steps {
                 script {
                     if (!params.autoApprove) {
-                        def plan = readFile 'terraform/tfplan.txt'
+                        def state = readFile 'tf_test/infrastructure/dev/tfstate.json'
                         input message: 'Do you want to apply the plan?', parameters: [
-                        text(name: 'Plan', description: 'Please review the plan', defaultValue: plan)
+                            text(name: 'State', description: 'Please review the state', defaultValue: state)
                         ]
                     }
                 }
@@ -49,7 +49,7 @@ pipeline {
 
         stage('Apply') {
             steps {
-                sh "pwd;cd tf_test/infrastructure/dev  ; terraform apply"
+                sh 'pwd; cd tf_test/infrastructure/dev; terraform apply tfplan'
 
             }
         }
