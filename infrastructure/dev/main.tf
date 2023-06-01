@@ -8,13 +8,13 @@ module "tf-state_module" {
 # Launch ec2/key_pair module.
 module "key_pair_module" {
     source = "../modules/ec2/key_pair"
-    public_key_pair_name = var.public_key_name
-    private_key_pair_name = "${var.private_key_name}.pem"
+    public_key_name = var.public_key_name
+    private_key_name = "${var.private_key_name}.pem"
 }
 
 # Launch ec2 module.
 module "ec2_module" {
-    source = "../modules/ec2_build"
+    source = "../modules/ec2"
     depends_on = [
         module.key_pair_module
     ]
@@ -30,11 +30,11 @@ module "ec2_module" {
  module "route53_module" {
     source = "../modules/route53"
      depends_on = [
-        module.ec2_build_module
+        module.ec2_module
         ]
 
     domain_address = var.domain_address
-    elastic_ip_public = module.ec2_module.elastic_ip_data
+    elastic_ip_public = module.ec2_module.elastic_ip_address_data
 }
 
 
