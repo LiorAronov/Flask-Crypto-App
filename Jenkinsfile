@@ -24,12 +24,14 @@ pipeline {
             }
 
         stage('Plan') {
-            steps {
-                sh 'pwd;cd tf_test/infrastructure/dev ; terraform init'
-                sh "pwd;cd tf_test/infrastructure/dev ; terraform plan "
-                sh 'pwd;cd tf_test/infrastructure/dev ; terraform show '
+            steps { 
+                dir("tf_test/infrastructure/dev") {
+                    sh 'terraform init'
+                    sh 'terraform plan -out=tfplan'
+                }
             }
         }
+
         stage('Approval') {
            when {
                not {
@@ -37,20 +39,20 @@ pipeline {
                }
            }
 
-           steps {
-               script {
-                    def plan = readFile 'terraform/tfplan.txt'
-                    input message: "Do you want to apply the plan?",
-                    parameters: [text(name: 'Plan', description: 'Please review the plan', defaultValue: plan)]
-               }
-           }
-       }
+
+        steps {
+            script {
+                def plan = sh(returnStdout: true, script: "terraform show -json tfplan")
+                input message: 'Do you want to apply the plan?', parameters: [text(name: 'Plan', description: 'Please review the plan', defaultValue: plan)]
+            }
+        }
 
         stage('Apply') {
             steps {
-                sh "pwd;cd tf_test/infrastructure/dev  ; terraform apply"
+                dir("tf_test/infrastructure/dev") {
+                sh "terraform apply"
+                }
             }
         }
     }
-
-  }
+}

@@ -3,7 +3,7 @@
 # Update the ubonto server.
 sudo apt update 
 
-# Install java.
+# Install Java.
 sudo apt install openjdk-11-jdk -y
 
 #  Debian package repository of Jenkins to automate installation and upgrade.
@@ -22,3 +22,7 @@ sudo apt-get install jenkins -y
 # Run jenkins
 sudo systemctl start jenkins
 sudo systemctl enable jenkins
+
+
+# Install Extensions.
+sudo apt install git
