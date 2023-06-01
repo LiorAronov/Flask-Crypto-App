@@ -11,11 +11,7 @@ variable "instance_type" {
     type = string
 }
 
-variable "public_key_pair_name" {
-    type = string
-}
-
-variable "user_data_file_path" {
+variable "public_key_name" {
     type = string
 }
 
