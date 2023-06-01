@@ -6,6 +6,12 @@ locking_state_table_name = "locking-state-currency-flask-app-1-6-23"
 public_key_name = "public-terrform-key"
 private_key_name = "private-terrform-key"
 
+jenkins_instance_name = "jenkins_instance"
+jenkins_instance_ami  = "ami-053b0d53c279acc90"
+jenkins_instance_type = "t2.micro"
+jenkins_security_group_name = "jenkins_security-group"
+jenkins_user_name = "CI-CD-USER"
+
 instance_name = "currency-flask-app"
 instance_ami = "ami-04581fbf744a7d11f"
 instance_type = "t2.micro"

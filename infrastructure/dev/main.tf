@@ -4,13 +4,34 @@ module "tf-state_module" {
     remote_state_bucket_name = var.remote_state_bucket_name
     locking_state_table_name = var.locking_state_table_name
 }
-
 # Launch ec2/key_pair module.
 module "key_pair_module" {
-    source = "../modules/ec2/key_pair"
+    source = "../modules/key_pair"
     public_key_name = var.public_key_name
     private_key_name = "${var.private_key_name}.pem"
 }
+
+# Launch ec2_jenkins module.
+module "ec2_jenkins_module" {
+    source = "../modules/ec2_jenkins"
+    depends_on = [
+        module.key_pair_module
+    ]
+
+    jenkins_instance_name = var.jenkins_instance_name
+    jenkins_instance_ami = var.jenkins_instance_ami
+    jenkins_instance_type = var.jenkins_instance_type
+    public_key_name = var.public_key_name
+    jenkins_security_group_name = var.jenkins_security_group_name
+    jenkins_user_name = var.jenkins_user_name
+}
+
+
+# terraform plan -target=module.tf-state_module -target=module.key_pair_module -target=module.ec2_jenkins_module
+# terraform apply -target=module.tf-state_module -target=module.key_pair_module -target=module.ec2_jenkins_module
+
+
+
 
 # Launch ec2 module.
 module "ec2_module" {
@@ -37,5 +58,6 @@ module "ec2_module" {
     elastic_ip_public = module.ec2_module.elastic_ip_address_data
 }
 
-
+# terraform plan -target=module.ec2_module -target=module.route53_module
+# terraform apply -target=module.ec2_module -target=module.route53_module
 
