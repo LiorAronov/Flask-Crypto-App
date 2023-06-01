@@ -16,6 +16,7 @@ pipeline {
                         dir("terraform")
                         {
                             git "https://github.com/LiorAronov/Flask-Crypto-App.git"
+                            
                         }
                     }
                 }
