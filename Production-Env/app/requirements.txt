@@ -1,0 +1,10 @@
+# Install necessary packages for Flask app
+flask
+requests
+
+# Install MongoDB database interacting 
+pymongo
+
+# Install coingecko Public API
+pycoingecko
+

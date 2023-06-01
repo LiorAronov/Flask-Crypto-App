@@ -1,0 +1,102 @@
+# jenkins Instance - Security Group.
+variable "jenkins_ingress_rules" {
+    description = "Security Group ingress - Jenkins Ec2 Instance."
+    type        = list(object({
+        from_port   = number
+        to_port     = number
+        protocol    = string
+        cidr_blocks = list(string)
+    }))
+    default     = [
+        {
+            from_port   = 8080
+            to_port     = 8080
+            protocol    = "tcp"
+            cidr_blocks = ["0.0.0.0/0"]
+        },
+        {
+            from_port   = 80
+            to_port     = 80
+            protocol    = "tcp"
+            cidr_blocks = ["0.0.0.0/0"]
+        },
+        {
+            from_port   = 22
+            to_port     = 22
+            protocol    = "tcp"
+            cidr_blocks = ["0.0.0.0/0"]
+        }
+    ]
+}
+
+variable "jenkins_egress_rules" {
+    description = "Security Group egress - app Ec2 Instance."
+    type        = list(object({
+        from_port   = number
+        to_port     = number
+        protocol    = string
+        cidr_blocks = list(string)
+    }))
+    default     = [
+        {
+        from_port   = 0
+        to_port     = 0
+        protocol    = "-1"
+        cidr_blocks = ["0.0.0.0/0"]
+            }
+    ]
+}
+# App Instance - Security Group.
+variable "app_ingress_rules" {
+    description = "Security Group ingress - app Ec2 Instance."
+    type        = list(object({
+        from_port   = number
+        to_port     = number
+        protocol    = string
+        cidr_blocks = list(string)
+    }))
+    default     = [
+        {
+            from_port   = 8080
+            to_port     = 8080
+            protocol    = "tcp"
+            cidr_blocks = ["0.0.0.0/0"]
+        },
+        {
+            from_port   = 80
+            to_port     = 80
+            protocol    = "tcp"
+            cidr_blocks = ["0.0.0.0/0"]
+        },
+        {
+            from_port   = 22
+            to_port     = 22
+            protocol    = "tcp"
+            cidr_blocks = ["0.0.0.0/0"]
+        },
+        {
+            from_port   = 443
+            to_port     = 443
+            protocol    = "tcp"
+            cidr_blocks = ["0.0.0.0/0"]
+        }
+    ]
+}
+
+variable "app_egress_rules" {
+    description = "Security Group egress - app Ec2 Instance."
+    type        = list(object({
+        from_port   = number
+        to_port     = number
+        protocol    = string
+        cidr_blocks = list(string)
+    }))
+    default     = [
+        {
+        from_port = 0
+        to_port   = 65535
+        protocol  = "tcp"
+        cidr_blocks = ["0.0.0.0/0"]
+            }
+    ]
+}
