@@ -11,7 +11,7 @@ resource "aws_instance" "main_instance" {
 
 
 # Elastic Ip.
-resource "aws_eip" "elastic_ip_flask_application" {
+resource "aws_eip" "elastic_ip_main_instance" {
   vpc = true
   instance = aws_instance.main_instance.id
     tags = {
