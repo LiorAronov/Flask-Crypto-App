@@ -36,15 +36,14 @@ pipeline {
                }
            }
 
-        //    steps {
-        //        script {
-        //             def plan = readFile 'terraform/tfplan.txt'
-        //             input message: "Do you want to apply the plan?",
-        //             parameters: [text(name: 'Plan', description: 'Please review the plan', defaultValue: plan)]
-        //        }
-        //    }
+           steps {
+               script {
+                    def plan = readFile 'terraform/tfplan.txt'
+                    input message: "Do you want to apply the plan?",
+                    parameters: [text(name: 'Plan', description: 'Please review the plan', defaultValue: plan)]
+               }
+           }
        }
-
 
         stage('Apply') {
             steps {
