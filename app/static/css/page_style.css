@@ -1,0 +1,74 @@
+/*      Home page. */
+.page-content {
+    height: 100%;
+    width: 100%;
+    min-height: 100vh;
+    background-image:  url('https://images.unsplash.com/photo-1635492491273-455af7728453?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=960&q=80');
+    background-repeat: no-repeat;    
+    background-size: cover;
+    position: relative;
+    display: grid;
+    grid-template-columns: repeat(1,1fr);
+    align-items: flex-start;
+
+}
+
+section {
+    padding: 120px 20px 0px 20px;
+}
+
+
+.home-content h5{
+    padding-top: 50px;
+    font-size: 40px;
+}
+
+.home-content h1 {
+    font-size: 80px;
+    padding-left: 80px;
+}
+
+#third-row {
+    padding-left: 180px;
+}
+.live-img-line {
+    flex-direction: row; 
+}
+#animation-header {
+    width: 100px;
+    height: 100px;
+    animation: translateAndRotate 3s forwards; }
+
+
+/*      Home page  - BTC icon Animation.*/
+@keyframes translateAndRotate {
+    0% {
+        transform: translateX(0px) rotate(0);
+        opacity: 1;}
+    90% {
+        opacity: 0.75;}
+    100% {
+        transform: translateX(800px) rotate(360deg);
+        opacity: 0 ;} 
+    }
+
+
+    /*      Currency data page. */
+.currency-data-table{
+    padding: 120px 0px 0px 80px;
+}
+
+.currency-data-table table, .currency-data-table td,.currency-data-table th {
+    border: 5px solid black;
+}
+
+.currency-data-table table{
+    width:80%;
+    background-color: #ffffff;
+    border-collapse: collapse;
+} 
+
+.currency-data-table th {
+    text-align: left;
+
+}

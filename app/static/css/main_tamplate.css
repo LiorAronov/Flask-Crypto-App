@@ -1,0 +1,185 @@
+/*Global design to all the pages. */
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    font-family: 'Ubuntu', sans-serif;
+    text-decoration: none;
+    list-style: none;
+}
+
+.disply-flex {
+    display: flex;
+}
+
+
+/*      */
+header {
+    position: fixed;
+    right: 0;
+    top: 0;
+    z-index: 1000;
+    width: 100%; 
+    display: flex;
+    flex-direction: column; 
+    font-weight:bold; 
+}
+
+.header-box {
+    background: #f5f5f5;
+    border: 0.5pt solid #d6d6d6;
+    border-radius: 5px;
+    box-shadow: 2px 2px 3px rgba(11, 11, 12, 0.12);
+    padding: 5px 20px 5px 20px;
+
+}
+
+
+/*      */
+.header-1 {
+    align-items:end;
+    height: 40px;
+
+}
+
+.market-data-header a {
+    color: rgb(97, 110, 133);
+    font-size: 11px;
+    padding-right: 15px;
+}
+
+.market-data-header span {
+    color: blue;    
+    padding-left: 4px;
+}
+
+#etu-value {
+    padding-right: 12px;
+}
+
+#logo-header {
+    font-size: 25px;
+    color:rgb(97, 110, 133);
+    padding-right: 15px;
+}
+
+/*       */
+.header-2 {
+    align-items: center;
+    height: 40px;
+    justify-content: space-between;
+}
+
+.header-2-left, .header-2-right, .search-box, .lcon-link {
+    display: flex;
+    align-items: center; 
+    height: 100%;
+}
+
+#menu-icon-header {
+    font-size: 15px;
+    z-index: 10001;
+    cursor: pointer;
+    display: none;
+}
+
+.nav-header-2 a {
+    color: black;
+    margin-left: 35px;
+    font-size: 16px;
+    border-bottom: 2px solid transparent;
+    transition: all .55s ease;
+}
+
+.nav-header-2 a:hover {
+    border-bottom: 2px solid black;
+    
+}
+
+
+/*Coin Search Box. */
+.search-box {
+    position: relative;
+    cursor: pointer; 
+}
+
+#search-input {
+    width: 40px;
+    height: 40px;
+    background: #e7feff;
+    border: 2px solid #dab8cb;
+    border-radius: 50px;
+    box-sizing: border-box;
+
+    font-size: 14px;    
+    padding: 0px 30px 0px 10px;
+    outline: none;
+    transition: all 1s ease;
+}
+
+#search-input:focus {
+    z-index: 0;
+    opacity: 1;
+    width: var(--width);
+}
+
+#search-input:after {
+    clip-path: inset(0% 0% 0% 100%);
+    transition: clip-path .04s linear .105s;
+}
+
+.search-box:hover #search-input {
+    width: auto;
+    background: #e7feff;
+}
+
+#search-icon {
+    position: absolute;
+    top: 50%;
+    right: 1px;
+    transform: translate(-50%,-50%);
+    color: #ffb3de;
+    font-size: 19px;
+    border-radius: 10px;
+}
+
+
+/*Github, Linkedin Icon Link Animation. */
+.lcon-link {
+    padding-left: 20px;
+}
+
+.lcon-link a {
+    padding-left: 5px;
+
+}
+.lcon-link img {
+    width: 36px;
+    animation: spinning 4s linear infinite;
+}
+
+@keyframes spinning {
+    from {
+        transform: rotate(0);
+        transform-origin: center;
+    }
+    to {
+        transform: rotate(360deg);
+        transform-origin: center;
+    } 
+}
+
+
+/*  */
+@media (max-width: 3370px){
+header {
+    padding: 5px 5px;
+    transition: .2s;} 
+}
+
+@media (max-width: 1226px){
+.page-content {
+        width: 100%;
+        height: auto;
+    }
+}

@@ -1,0 +1,45 @@
+{% extends "./main_tamplate.html"%}
+
+{% block content %}
+<div class="table-box">
+
+<div class="all-coins-table">
+    <table>
+        <thead class="tables-head-title">
+            <tr><th colspan="10"> Exchanges by 24 Volume</th></tr>
+        </thead>
+        <thead>
+            <tr class="all-coins-thead">
+                <th>Rank</th>
+                <th>Icon</th>
+                <th id="big-space" >Exchanges Name</th>
+                <th>Trading volume(24h)</th>
+                <th>Weekly Visits</th>
+                <th>fees</th>
+                <th>Date Launched</th>
+            </tr>
+        </thead>
+
+        <tbody>
+            {% for item in top_exchanges %}
+
+            <tr class="all-coins-tbody">
+
+                <td> {{ loop.index }}  </td>
+                <td><a href="#"><img src="{{ item.logo }}"></a></td>
+                <td id="big-space">{{ item.name }} </td>
+                <td> $ {{ item.spot_volume_24h }}</td>
+                <td>  {{ item.weekly_visits }}</td>
+                <td id="exchanges-fees"> Maker-Fees: <span> {{ item.maker_fees }} </span> Taker-Fees: <span> {{ item.taker_fees }} </span></td>
+                <td> {{ item.date_launched }} </td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+</div>
+
+</div>
+
+
+
+{% endblock %}

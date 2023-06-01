@@ -1,0 +1,102 @@
+{% extends "./main_tamplate.html"%}
+
+{% block content %}
+
+<div class="table-box">
+    
+    <div class="trending-table">
+        <table>
+            <thead class="head-title-tables">
+                <tr><th colspan="5">Top 7 Trending Coins</th></tr>
+            </thead>
+
+            <thead>
+                <tr class="trending-thead">
+                  <th><i class="fa-solid fa-arrow-trend-up"></i></th>
+                  <th>Rank</th>
+                  <th>Icon</th>
+                  <th>Coin Name</th>
+                  <th>Price</th>
+                </tr>
+            </thead>
+
+            <tbody>
+                {% for item in trending_currency %}
+                <tr class="trending-tbody">
+                    <td><a href="{{ url_for('search', user_cryptocurrency_input=item.name) }}"> {{ loop.index }} </a></td>
+                    <td><a href="{{ url_for('search', user_cryptocurrency_input=item.name) }}"> {{ item.coin_rank }} </a></td>
+                    <td><a href="{{ url_for('search', user_cryptocurrency_input=item.name) }}"><img src="{{ item.icon }}"></a></td>
+                    <td><a href="{{ url_for('search', user_cryptocurrency_input=item.name) }}"> {{ item.name }} <span> {{ item.symbol }} </span></a></td>
+                    <td><div class="price-peek">
+                        <a href="{{ url_for('search', user_cryptocurrency_input=item.name) }}"> $ {{ item.price }} </a>
+                            {% if item.full_price %}
+                            <span class="price-peek-box">$ {{ item.full_price }}</span>
+                            {% endif %}
+                    </div></td>
+                </tr>
+            </tbody>
+            {% endfor %}
+        </table>
+    </div>
+
+
+
+
+
+
+
+
+
+    <div class="all-coins-table">
+        <table>
+            <thead class="tables-head-title">
+                <tr><th colspan="10">Cryptocurrency by Market Cap</th></tr>
+            </thead>
+
+            <thead>
+                <tr class="all-coins-thead">
+                    <th>Rank</th>
+                    <th>Icon</th>
+                    <th id="big-space" >Coin Name</th>
+                    <th>Price</th>
+                    <th>Market Cap</th>
+                    <th>1h%</th>
+                    <th>24h%</th>
+                    <th>Circulating Supply</th>
+                    <th>Volume(24h)</th>
+                    <th>Market Dominance</th>
+                </tr>
+            </thead>
+
+            <tbody>
+                {% for item in top_currency %}
+                <tr class="all-coins-tbody">
+                    <td><a href="{{ url_for('search', user_cryptocurrency_input=item.id) }}"> {{ item.coin_rank }} </a></td>
+
+                     <td><a href="{{ url_for('search', user_cryptocurrency_input=item.id) }}">
+                        <img src="https://s2.coinmarketcap.com/static/img/coins/64x64/{{ item.id }}.png"></a></td>
+                    <td id="big-space"><a href="{{ url_for('search', user_cryptocurrency_input=item.id) }}"> {{ item.name }} <span> {{ item.symbol }} </span></a></td>
+
+
+                    <td><div class="price-peek">
+                        <a href="{{ url_for('search', user_cryptocurrency_input=item.id) }}"> $ {{ item.price }} </a>
+                            {% if item.full_price %}
+                        <span class="price-peek-box">$ {{ item.full_price }}</span>
+                            {% endif %}
+                    </div></td>
+
+                    <td> $ {{ item.market_cap }}</td>
+                    <td><p class="{% if item.price_change_1h_percent|float < 0 %}price__change-negative{% else %}price__change-positive{% endif %}"> {{ item.price_change_1h_percent }} % </p></td>
+                    <td><p class="{% if item.price_change_24h_percent|float < 0 %}price__change-negative{% else %}price__change-positive{% endif %}"> {{ item.price_change_24h_percent }} % </p></td>
+                    <td> {{ item.circulating_supply }} <span> {{ item.symbol }} </span> </td>
+                    <td> $ {{ item.vol_24h }} </td>
+                    <td> {{ item.dominance_percent }} % </td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+
+</div>
+
+{% endblock %}

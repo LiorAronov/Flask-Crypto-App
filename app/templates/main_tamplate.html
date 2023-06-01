@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <link rel="stylesheet" href="../static/css/main_tamplate.css">
+  <link rel="stylesheet" href="../static/css/page_style.css">
+  <link rel="stylesheet" href="../static/css/coin_data.css">
+  <link rel="stylesheet" href="../static/css/market_data.css">
+
+  <script src="<?php echo $myAwesomeKey; ?>" crossorigin="anonymous"></script>
+  <!-- google fonts. -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Ubuntu&display=swap" rel="stylesheet">
+
+  <title>Main Tamplate</title>
+</head>
+<body>
+
+    <header>
+      <div class="header-1 disply-flex header-box ">
+        <a id="logo-header">LA Currency</a>
+        <ul class="market-data-header disply-flex ">
+          <li><a href="#">Cryptos: <span>AAAAAAAAAA</span></a></li>
+          <li><a href="#">Exchanges: <span>AAAAAAAAAA</span></a></li>
+          <li><a href="#">Market Cap: <span>AAAAAAAAAA</span></a></li>
+          <li><a href="#">24h Vol: <span>AAAAAAAAAA</span></a></li>
+          <li><a href="#">Dominance: BTC: <span id="etu-value">AAAAAAAAAA</span>ETH: <span>AAAAAAAAAA</span></a></li>
+        </ul>
+      </div>
+      <div class="header-2 disply-flex header-box ">
+        <div class="header-2-left disply-flex">
+          <div id="menu-icon-header"><i class="fa-solid fa-bars"></i></div>
+          <ul class="nav-header-2 disply-flex">
+            <li><a href="{{ url_for('home') }}">Home</a></li>
+            <li><a href="{{ url_for('market_data') }}">Cryptocurrency</a></li>
+            <li><a href="#">Trending</a></li>
+            <li><a href="{{ url_for('exchanges') }}">Exchanges</a></li>
+            <li><a href="#">Converter</a></li>
+            <li><a href="#">News</a></li>
+            <li><a href="#">About</a></li>
+          </ul>
+        </div>
+        <div class="header-2-right disply-flex">
+
+          <div class="search-box disply-flex"> 
+            <form  action="/search" method="post">
+              <input id="search-input" type="text" name="user_cryptocurrency_input"  placeholder="search...">
+            </form>
+            <i id="search-icon"class="fas fa-search"></i>
+          </div>
+          
+          <div class="lcon-link disply-flex">
+            <a href="https://www.linkedin.com/in/lioraronov/" target="_blank"><img src="../static/web-image/icon/linkedin-64px.png" alt="Linkedin Icon"></a>
+            <a href="https://www.github.com/LiorAronov/" target="_blank"><img src="../static/web-image/icon/github-64px.png" alt="github Icon"></a>
+          </div>
+        </div>
+      </div>
+    </header>
+    <section class="page-content">   <!-- Default content for child templates goes here -->  
+      {% block content %}
+      
+      {% endblock %}
+    </section>      
+</body>
+</html>   

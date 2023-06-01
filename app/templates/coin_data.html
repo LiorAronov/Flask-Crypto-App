@@ -1,0 +1,84 @@
+{% extends "./main_tamplate.html"%}
+
+{% block content %}
+
+<div class="coin-data__boxes">
+
+  <div class="coin-data__information-box ">
+
+    <ul class="coin-data__main">
+      <li>
+        <img id="coin-data__logo" src="{{cryptocurrency_metadata.logo }}" alt="{{cryptocurrency_information.name}}logo">
+        <p id="coin-data__name">{{cryptocurrency_information.name}}</p>
+        <p id="coin-data__symbol">{{cryptocurrency_information.symbol}}</p>
+      </li>
+      <li>
+        <p id="coin-data__price">$ {{ cryptocurrency_information.price }} </p>
+        <p id="change_1h" class="{% if cryptocurrency_information.price_change_1h_percent|float < 0 %}price__change-negative{% else %}price__change-positive{% endif %}">
+            {{ cryptocurrency_information.price_change_1h_percent }}% (1h),
+        </p>
+        <p class="{% if cryptocurrency_information.price_change_24h_percent|float < 0 %}price__change-negative{% else %}price__change-positive{% endif %}">
+            {{ cryptocurrency_information.price_change_24h_percent }}% (24h)
+        </p>
+      </li>
+
+     
+
+
+    </ul>
+    <hr id="coin-data__line">
+    <ul class="coin-data__general">
+      <li><p>Market Rank:</p><span>{{cryptocurrency_information.market_rank}}</span></li>
+      <li><p>Market cap:</p><span>{{cryptocurrency_information.market_cap}}</span></li>
+      <li><p>Market Dominance:</p><span>{{cryptocurrency_information.dominance_percent}}%</span></li>
+      <li><p>Volume (24h):</p><span>${{cryptocurrency_information.vol_24h}}</span></li>
+      <li><p>Volume/Market cap (24h):</p><span>{{cryptocurrency_information.vol_change_24h}}%</span></li>
+
+      <hr id="coin-data__line">
+
+      <li><p>Circulating supply:</p><span>{{cryptocurrency_information.circulating_supply}}</span></li>
+      <li><p>Total supply:</p><span>{{cryptocurrency_information.total_supply}}</span></li>
+      <li><p>Max supply:</p><span>{{cryptocurrency_information.max_supply}}</span></li>
+      <hr id="coin-data__line">
+
+       <li><p>Change 7d:</p><span class="{% if cryptocurrency_information.price_change_7d_percent|float < 0 %}price__change-negative{% else %}price__change-positive{% endif %}">{{cryptocurrency_information.price_change_7d_percent}}%</span></li>
+      <li><p>Change 30d:</p><span class="{% if cryptocurrency_information.price_change_30d_percent|float < 0 %}price__change-negative{% else %}price__change-positive{% endif %}">{{cryptocurrency_information.price_change_30d_percent}}%</span></li>
+
+      <hr id="coin-data__line">
+
+      <li><p>Date Coin Launched :</p><span>{{cryptocurrency_metadata.date_launched}}</span></li>
+
+      <hr id="coin-data__line">
+    </ul> 
+
+    <ul class="coin-data__links">
+      
+      <li><p>Official links:</p></li>
+      <li class="links-style">
+        <a href="{{cryptocurrency_metadata.website_url }}" target="_blank"><i class="fa-solid fa-globe"></i>Website</a>
+        <a href="{{cryptocurrency_metadata.source_code_url }}" target="_blank"><i class="fa-solid fa-code"></i>Source Code</a>
+        <a href="{{cryptocurrency_metadata.whitepaper_url }}" target="_blank"><i class="fa-solid fa-file"></i>Whitepaper</a>
+      </li>
+
+      <li><p>Socials:</p></li>
+      <li class="links-style">
+        <a href="{{cryptocurrency_metadata.coin_twitter_url }}" target="_blank"><i class="fa-brands fa-twitter"></i>Twitter</a> 
+        <a href="{{cryptocurrency_metadata.coin_reddit_url }}" target="_blank"><i class="fa-brands fa-reddit"></i>Reddit</a>    
+      </li>
+    </ul>
+  </div>
+
+    
+  <div class="coin-data__middle-box ">
+    <div class="about-box ">
+      <p>About {{cryptocurrency_information.name}}:</p><span>{{cryptocurrency_metadata.description}}</span>
+    </div>
+
+    <div class="graph-box ">
+      <p>coin graph</p>
+
+      <span> {{coin_historical_data.prices}}</span>
+    </div>
+  </div>
+
+{% endblock %}
