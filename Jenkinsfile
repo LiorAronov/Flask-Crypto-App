@@ -9,11 +9,12 @@ pipeline {
     }
 
    agent  any
+
     stages {
         stage('checkout') {
             steps {
                  script{
-                        dir("infrastructure/dev")
+                        dir("tf_test")
                         {
                             git "https://github.com/LiorAronov/Flask-Crypto-App.git"
 
@@ -24,9 +25,9 @@ pipeline {
 
         stage('Plan') {
             steps {
-                sh 'pwd;cd infrastructure/dev ; terraform init'
-                sh "pwd;cd infrastructure/dev ; terraform plan "
-                sh 'pwd;cd infrastructure/dev ; terraform show '
+                sh 'pwd;cd tf_test/infrastructure/dev ; terraform init'
+                sh "pwd;cd tf_test/infrastructure/dev ; terraform plan "
+                sh 'pwd;cd tf_test/infrastructure/dev ; terraform show '
             }
         }
         stage('Approval') {
@@ -47,7 +48,7 @@ pipeline {
 
         stage('Apply') {
             steps {
-                sh "pwd;cd infrastructure/dev  ; terraform apply"
+                sh "pwd;cd tf_test/infrastructure/dev  ; terraform apply"
             }
         }
     }
