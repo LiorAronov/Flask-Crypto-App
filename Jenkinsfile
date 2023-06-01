@@ -26,9 +26,9 @@ pipeline {
         stage('Plan') {
             steps { 
                 dir("tf_test/infrastructure/dev") {
-                sh 'pwd;cd tf_test/infrastructure/dev/ ; terraform init'
-                sh "pwd;cd tf_test/infrastructure/dev/ ; terraform plan "
-                sh 'pwd;cd tf_test/infrastructure/dev/ ; terraform show '
+                sh 'pwd;cd tf_test/infrastructure/dev ; terraform init'
+                sh "pwd;cd tf_test/infrastructure/dev ; terraform plan "
+                sh 'pwd;cd tf_test/infrastructure/dev ; terraform show '
                 }
             }
         }
@@ -49,7 +49,7 @@ pipeline {
 
         stage('Apply') {
             steps {
-                sh "pwd;cd tf_test/infrastructure/dev/  ; terraform apply"
+                sh "pwd;cd tf_test/infrastructure/dev  ; terraform apply"
 
             }
         }
