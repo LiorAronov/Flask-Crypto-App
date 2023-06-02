@@ -1,0 +1,1 @@
+CoinMarketCap_API_KEY = "40f253ac-31ad-43a2-94b9-74bb51537edf"
