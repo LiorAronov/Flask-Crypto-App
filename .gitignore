@@ -1,4 +1,5 @@
-Development-Env/dev/.terraform
-Production-Env/app/Keys.py
-Production-Env/app/templates/Keys_html.php
-Development-Env/Keys/
+Development-Env/.terraform
+Production-Env/Keys.py
+Production-Env/templates/Keys_html.php
+Production-Env/app
+keys/Keys.py
