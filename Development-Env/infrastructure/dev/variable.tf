@@ -1,102 +1,57 @@
-# jenkins Instance - Security Group.
-variable "jenkins_ingress_rules" {
-    description = "Security Group ingress - Jenkins Ec2 Instance."
-    type        = list(object({
-        from_port   = number
-        to_port     = number
-        protocol    = string
-        cidr_blocks = list(string)
-    }))
-    default     = [
-        {
-            from_port   = 8080
-            to_port     = 8080
-            protocol    = "tcp"
-            cidr_blocks = ["0.0.0.0/0"]
-        },
-        {
-            from_port   = 80
-            to_port     = 80
-            protocol    = "tcp"
-            cidr_blocks = ["0.0.0.0/0"]
-        },
-        {
-            from_port   = 22
-            to_port     = 22
-            protocol    = "tcp"
-            cidr_blocks = ["0.0.0.0/0"]
-        }
-    ]
+# # The modules variables.
+
+
+variable "remote_state_name" { 
+  type        = string
+}
+variable "locking_state_name" { 
+  type        = string
+}
+variable "public_key_name" { 
+  type        = string
+}
+variable "private_key_name" { 
+  type        = string
+}
+variable "security_group_name" { 
+  type        = string
 }
 
-variable "jenkins_egress_rules" {
-    description = "Security Group egress - app Ec2 Instance."
-    type        = list(object({
-        from_port   = number
-        to_port     = number
-        protocol    = string
-        cidr_blocks = list(string)
-    }))
-    default     = [
-        {
-        from_port   = 0
-        to_port     = 0
-        protocol    = "-1"
-        cidr_blocks = ["0.0.0.0/0"]
-            }
-    ]
+variable "jenkins_instance_name" { 
+  type        = string
 }
-# App Instance - Security Group.
-variable "app_ingress_rules" {
-    description = "Security Group ingress - app Ec2 Instance."
-    type        = list(object({
-        from_port   = number
-        to_port     = number
-        protocol    = string
-        cidr_blocks = list(string)
-    }))
-    default     = [
-        {
-            from_port   = 8080
-            to_port     = 8080
-            protocol    = "tcp"
-            cidr_blocks = ["0.0.0.0/0"]
-        },
-        {
-            from_port   = 80
-            to_port     = 80
-            protocol    = "tcp"
-            cidr_blocks = ["0.0.0.0/0"]
-        },
-        {
-            from_port   = 22
-            to_port     = 22
-            protocol    = "tcp"
-            cidr_blocks = ["0.0.0.0/0"]
-        },
-        {
-            from_port   = 443
-            to_port     = 443
-            protocol    = "tcp"
-            cidr_blocks = ["0.0.0.0/0"]
-        }
-    ]
+variable "jenkins_instance_ami" { 
+  type        = string
+}
+variable "jenkins_instance_type" { 
+  type        = string
+}
+variable "app_security_group_name" { 
+  type        = string
+}
+variable "jenkins_elastic_ip_name" { 
+  type        = string
+}
+variable "jenkins_user_name" { 
+  type        = string
+}
+variable "jenkins_user_policy_arn" { 
+  type        = string
+}
+variable "app_instance_name" { 
+  type        = string
+}
+variable "app_instance_ami" { 
+  type        = string
+}
+variable "app_instance_type" { 
+  type        = string
 }
 
-variable "app_egress_rules" {
-    description = "Security Group egress - app Ec2 Instance."
-    type        = list(object({
-        from_port   = number
-        to_port     = number
-        protocol    = string
-        cidr_blocks = list(string)
-    }))
-    default     = [
-        {
-        from_port = 0
-        to_port   = 65535
-        protocol  = "tcp"
-        cidr_blocks = ["0.0.0.0/0"]
-            }
-    ]
+variable "app_elastic_ip_name" { 
+  type        = string
 }
+variable "domain_address" { 
+  type        = string
+}
+
