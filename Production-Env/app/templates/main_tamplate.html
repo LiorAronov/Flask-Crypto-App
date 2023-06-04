@@ -18,16 +18,16 @@
   <title>Main Tamplate</title>
 </head>
 <body>
-
     <header>
       <div class="header-1 disply-flex header-box ">
         <a id="logo-header">LA Currency</a>
         <ul class="market-data-header disply-flex ">
-          <li><a href="#">Cryptos: <span>AAAAAAAAAA</span></a></li>
-          <li><a href="#">Exchanges: <span>AAAAAAAAAA</span></a></li>
-          <li><a href="#">Market Cap: <span>AAAAAAAAAA</span></a></li>
-          <li><a href="#">24h Vol: <span>AAAAAAAAAA</span></a></li>
-          <li><a href="#">Dominance: BTC: <span id="etu-value">AAAAAAAAAA</span>ETH: <span>AAAAAAAAAA</span></a></li>
+          <li><a href="#">Cryptos: <span>{{market_information.active_cryptocurrencies}}</span></a></li>
+          <li><a href="#">Exchanges: <span>{{market_information.active_exchanges}}</span></a></li>
+          <li><a href="#">Market Cap: <span>${{market_information.market_cap}}</span></a></li>
+          <li><a href="#">24h Vol: <span>{{market_information.vol_24h}}</span></a></li>
+          <li><a href="#">Dominance: BTC: <span id="etu-value">{{market_information.btc_dominance}}%</span>ETH: <span>{{market_information.eth_dominance}}%</span></a></li>
+          <li><a href="#">Defi Market Cap: <span id="etu-value">${{market_information.defi_market_cap}}</span>Defi 24h Vol: <span>{{market_information.defi_vol_24h}}</span></a></li>
         </ul>
       </div>
       <div class="header-2 disply-flex header-box ">
