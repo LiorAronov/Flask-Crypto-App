@@ -22,8 +22,7 @@ module "ec2_jenkins_module" {
     instance_ami = var.jenkins_instance_ami
     instance_type = var.jenkins_instance_type
     public_key_name = var.public_key_name
-    user_data_script = "user_data/jenkins_user_data_script.sh"
-    elastic_ip_name = var.jenkins_elastic_ip_name
+    user_data_file_path = var.jenkins_user_data_file_script_path
     security_group_name = var.security_group_name
 }
 
@@ -37,10 +36,19 @@ module "ec2_app_module" {
     instance_ami = var.app_instance_ami
     instance_type = var.app_instance_type
     public_key_name = var.public_key_name
-    user_data_script = "user_data/app_user_data_script.sh"
-    elastic_ip_name = var.app_elastic_ip_name
+    user_data_file_path = var.app_user_data_file_script_path
     security_group_name = var.app_security_group_name
     }
+
+module "elastic_ip_module" {
+    source = "../modules/elastic_ip"
+    depends_on = [
+        module.ec2_jenkins_module
+    ]
+    ec2_instance_id = module.ec2_app_module.ec2_instance_output
+    elastic_ip_name = var.app_elastic_ip_name
+
+}
 
 # Launch iam_user module.
  module "iam_user_module" {
@@ -57,10 +65,10 @@ module "ec2_app_module" {
  module "route53_module" {
     source = "../modules/route53"
      depends_on = [
-        module.ec2_app_module
+        module.elastic_ip_module
         ]
 
     domain_address = var.domain_address
-    elastic_ip_public = module.ec2_app_module.elastic_ip_output
+    elastic_ip_public = module.elastic_ip_module.elastic_ip_output
 }
 

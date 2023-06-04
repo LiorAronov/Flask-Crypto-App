@@ -9,19 +9,12 @@ variable "instance_type" {
     type = string
 }
 
-
-
 variable "public_key_name" {
     type = string
 }
-variable "user_data_script" {
+variable "user_data_file_path" {
     type = string
 }
-
-variable "elastic_ip_name" {
-    type = string
-}
-
 variable "security_group_name" {
     type = string
 

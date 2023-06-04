@@ -20,7 +20,7 @@ resource "aws_iam_access_key" "iam_access_key" {
 
 # pull Access key and Access ID to keys/txt.file.
 resource "local_file" "iam_access_key_local" {
-  filename = "../../keys/${var.iam_user_name}-keys.txt"
+  filename = "../../keys-dev/${var.iam_user_name}-keys.txt"
   content = "AWS_ACCESS_KEY_ID: ${aws_iam_access_key.iam_access_key.id} \nAWS_SECRET_ACCESS_KEY: ${aws_iam_access_key.iam_access_key.secret}"
 
 }

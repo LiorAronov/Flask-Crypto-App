@@ -29,9 +29,9 @@ variable "jenkins_instance_type" {
 variable "app_security_group_name" { 
   type        = string
 }
-variable "jenkins_elastic_ip_name" { 
-  type        = string
-}
+# variable "jenkins_elastic_ip_name" { 
+#   type        = string
+# }
 variable "jenkins_user_name" { 
   type        = string
 }
@@ -52,6 +52,14 @@ variable "app_elastic_ip_name" {
   type        = string
 }
 variable "domain_address" { 
+  type        = string
+}
+
+variable "jenkins_user_data_file_script_path" { 
+  type        = string
+}
+
+variable "app_user_data_file_script_path" { 
   type        = string
 }
 

@@ -1,6 +1,6 @@
 from requests import Request, Session
 import json
-from keys.Keys import CoinMarketCap_API_KEY
+from keys_app.Keys import CoinMarketCap_API_KEY
 from URL_API_Request import cryptocurrency__id_map, cryptocurrency__quotes, cryptocurrency__metadata, fiat__id_map, tools__Price_Conversion, globalmetrics__quotes, cryptocurrency__listings, exchange__id_map, exchange__metadata
 
 # API Connection To CoinMarketCap.
