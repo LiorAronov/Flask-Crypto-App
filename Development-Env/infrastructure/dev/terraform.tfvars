@@ -16,7 +16,7 @@ jenkins_user_policy_arn = "arn:aws:iam::aws:policy/AdministratorAccess"
 
 app_security_group_name = "app-security-group" 
 app_instance_name = "app-instance"
-app_instance_ami = "ami-04581fbf744a7d11f" #Linux
+app_instance_ami = "ami-053b0d53c279acc90" #Ubuntu
 app_instance_type = "t2.micro"
 app_user_data_file_script_path = "../../user_data/app_user_data_script.sh"
 app_elastic_ip_name = "app-elastic-ip"

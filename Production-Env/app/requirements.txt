@@ -8,3 +8,4 @@ pymongo
 # Install coingecko Public API
 pycoingecko
 
+gunicorn
