@@ -23,7 +23,7 @@ sudo pip3 install -r requirements.txt
 
 
 # Install AWS CLI for access to AWS services
-# sudo yum install -y awscli
+# sudo yum install -y mawscli
 
 # # Install Docker on the EC2 
 # sudo amazon-linux-extras install docker
