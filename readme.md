@@ -1,4 +1,6 @@
-# Crypto Currency Data Flask Application --IN PROGRESS--
+# --IN PROGRESS--
+#
+# Crypto Currency Data Flask Application 
 
 ## Introduction
 This Flask application is designed to provide users with real-time cryptocurrency information by connecting to the CoinMarketCap and CoinGecko API. \

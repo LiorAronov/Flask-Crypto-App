@@ -4,7 +4,7 @@ resource "aws_instance" "ec2_instance" {
     instance_type = var.instance_type
     vpc_security_group_ids = [aws_security_group.security_group.id]
     key_name = var.public_key_name
-    user_data     = file("${path.module}/${var.user_data_file_path}")
+    user_data     = file(var.user_data_file_path)
     tags = {
       Name = var.instance_name
     }

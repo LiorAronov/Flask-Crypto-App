@@ -1,3 +1,5 @@
 .terraform/
-keys_app/
+keys_test/
 keys-dev/
+dev/
+terraform.tfvars
